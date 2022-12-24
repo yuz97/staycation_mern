@@ -1,0 +1,44 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahCategory">
+            <i class="fas fa-plus"></i> Tambah
+        </a>
+    </div>
+    <div class="card-body">
+
+        <div class="table-responsive mt-2">
+            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th colspan="2" class="text-center">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categories.forEach((category,i) => { %>
+                    <tr>
+                        <td><%= i+1 %> </td>
+                        <td><%= category.name %> </td>
+                        <td align="center">
+                            <form action="/admin/category/<%= category.id %>?_method=DELETE " method="post">
+
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>
+                                    delete</button>
+                            </form>
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-warning btn-sm btn-edit" href="javascript:void(0)"
+                                data-id="<%= category.id %>" data-name="<%= category.name %>">
+                                <i class="fas fa-pen"></i> edit</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

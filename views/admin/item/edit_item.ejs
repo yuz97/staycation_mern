@@ -1,0 +1,45 @@
+<form action="/admin/item/edit/<%= item.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="title">Judul</label>
+            <input type="text" name="title" id="title" value="<%= item.title %> " class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" min="0" name="price" value="<%= item.price %>" id="price" class="form-control"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" value="<%= item.city %>" class=" form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="categoryId">Category</label>
+            <select name="categoryId" class="form-control">
+                <% for( let i = 0; i < item.categoryId.length; i++ ) { %>
+                <option value="<%= item.categoryId[i].id %>" selected>-- <%= item.categoryId[i].name %> --</option>
+                <% } %>
+                <% category.forEach(item => { %>
+                <option value="<%= item.id %>"><%= item.name %> </option>
+                <% }) %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" class="form-control" multiple>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="form-control"
+                rows="4"><%= item.description %></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+        </div>
+    </div>
+
+</form>
+
+<script>
+    CKEDITOR.replace('description');
+</script>

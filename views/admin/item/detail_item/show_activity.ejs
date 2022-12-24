@@ -1,0 +1,82 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="/admin/item/add/activity" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Nama</label>
+                            <input type="text" name="name" id="name" class="form-control name">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Type </label>
+                            <input type="text" name="type" id="type" class="form-control type">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="image"> Gambar</label>
+                            <input type="file" name="image" id="image" class="form-control">
+
+                        </div>
+                        <input type="hidden" name="id" class="id">
+                        <input type="hidden" name="itemId" class="form-control itemId" value="<%= itemId %>">
+                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="col-md-7">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTableActivity" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>No</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Image</th>
+                                <th colspan="2" class="text-center">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% activity.forEach((element,i) => { %>
+                            <tr>
+                                <td><%= i+1 %> </td>
+                                <td><%= element.name %> </td>
+                                <td><%= element.type %> </td>
+                                <td>
+                                    <img src="http://localhost:3000/<%= element.imageUrl %>"
+                                        alt="<%= element.imageUrl %>" width="20" height="20">
+                                </td>
+                                <td>
+                                    <form action="/admin/item/<%= itemId %>/activity/<%= element.id %>?_method=DELETE"
+                                        method="post">
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i></button>
+                                    </form>
+                                </td>
+                                <td><button class="btn btn-warning btn-sm btn-circle btn-update-activity"
+                                        data-id="<%= element.id %>" data-name="<%= element.name %>"
+                                        data-type="<%= element.type %>" data-itemid="<%= element.itemId %>">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <% }) %>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

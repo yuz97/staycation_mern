@@ -1,0 +1,58 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahBank">
+            <i class="fas fa-plus"></i> Tambah
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Bank</th>
+                        <th>Nomor Rekening</th>
+                        <th>Nama</th>
+                        <th>Gambar</th>
+                        <th colspan="2" class="text-center">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <% bank.forEach((item,i) => { %>
+
+                    <tr>
+                        <td><%= i+1 %> </td>
+                        <td><%= item.nameBank %> </td>
+                        <td><%= item.nomorRekening %> </td>
+                        <td><%= item.name %> </td>
+                        <td align="center">
+                            <img src="http://localhost:3000/<%= item.imageUrl %> " alt="<%= item.imageUrl %> "
+                                width="40" height="40">
+                        </td>
+                        <td align="center">
+                            <form action="/admin/bank/<%= item.id %>?_method=DELETE " method="post">
+                                <button class="btn btn-danger btn-sm" type="submit">
+                                    <i class="fas fa-trash"></i>
+                                    delete
+                                </button>
+                            </form>
+                        </td>
+
+                        <td align="center">
+                            <a href="javascript:void()" type="button" class="btn btn-warning btn-sm btn-bank"
+                                data-id="<%= item.id %>" data-namebank="<%= item.nameBank %>"
+                                data-nomorrekening="<%= item.nomorRekening %>" data-name="<%= item.name %>">
+                                <i class="fas fa-pen"></i>
+                                edit
+                            </a>
+                        </td>
+                    </tr>
+
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
