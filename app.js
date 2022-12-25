@@ -15,7 +15,7 @@ const methodOverRide = require('method-override');
 //import mongoose
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://127.0.0.1:27017/db_staycation', {
+mongoose.connect('mongodb+srv://staycation:bwamern@cluster0.7g6ldcp.mongodb.net/db_staycation?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // useCreateIndex: true,
